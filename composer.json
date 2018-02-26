@@ -16,7 +16,7 @@
     "require": {},
     "scripts" : {
         "tests" : "composer fixes && composer sniffs && composer lints && composer test",
-        "test": "php test.php",
+        "test": "php test.php && phpunit",
         "sniffs" : "phpcs --standard=PSR2 src/ && phpcs --standard=PSR2 tests/",
         "fixes" : "php-cs-fixer fix src/ && php-cs-fixer fix tests/",
         "lints" : "parallel-lint ./src  --blame --exclude vendor && parallel-lint ./tests  --blame --exclude vendor"
