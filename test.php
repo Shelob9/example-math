@@ -65,7 +65,7 @@ if( ! isEquals(1,1 ) || ! isEquals(-5.05, -5.05 ) ){
     fail( __LINE__, 0, 0);
 }
 
-
+/** Tests without factory */
 //Test we can add positive and negative numbers correctly
 $result = singleNumberMathFactory(5, 'sum')->operate(-5);
 assertIsEqual($result, 0 );
@@ -75,16 +75,45 @@ $result = singleNumberMathFactory(5, 'subtract')->operate(-10);
 assertIsEqual($result, 15);
 
 //Test that we can average numbers the alternative way
-$result = (new Average())->addNumber(5)->addNumber(10)->getAverageAlt();
+$result = (new \ExampleMath\Average())->addNumber(5)->addNumber(10)->getAverageAlt();
 assertIsSame($result, 7.5); //Allow a different typing of results
 
 //Test that we can average numbers the primary way
-$result = (new Average())->addNumber(20)->addNumber(10)->getAverage();
+$result = (new \ExampleMath\Average())->addNumber(20)->addNumber(10)->getAverage();
 assertIsSame($result, 15 ); //Allow a different typing of results
 
 //Test that an empty collection's average is 0 and we do not attempt to divide by 0
-$result = (new Average())->getAverage();
+$result = (new \ExampleMath\Average())->getAverage();
+assertIsSame($result, 0 );
+
+
+/** Tests that factory works the same as the function it wraps */
+
+
+//Test we can add positive and negative numbers correctly
+$factory = new \ExampleMath\MathFactory();
+$result = $factory->singleNumberFactory(5, 'sum')->operate(-5);
+assertIsEqual($result, 0 );
+
+//Test that we can subtract negative numbers correctly
+$factory = new \ExampleMath\MathFactory();
+$result = $factory->singleNumberFactory(5, 'subtract')->operate(-10);
+assertIsEqual($result, 15);
+
+//Test that we can average numbers the alternative way
+$factory = new \ExampleMath\MathFactory();
+$result =  $factory->averageFactory()->addNumber(5)->addNumber(10)->getAverageAlt();
+assertIsSame($result, 7.5); //Allow a different typing of results
+
+//Test that we can average numbers the primary way
+$factory = new \ExampleMath\MathFactory();
+$result =  $factory->averageFactory()->addNumber(20)->addNumber(10)->getAverage();
+assertIsSame($result, 15 ); //Allow a different typing of results
+
+//Test that an empty collection's average is 0 and we do not attempt to divide by 0
+$factory = new \ExampleMath\MathFactory();
+$result =  $factory->averageFactory()->getAverage();
 assertIsSame($result, 0 );
 
 //Print success message, will be blocked by exceptions
-var_dump('It worked');
+var_dump('It worked' );
