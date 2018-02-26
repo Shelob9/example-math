@@ -3,7 +3,6 @@
 
 namespace ExampleMath;
 
-
 class DoMath
 {
 
@@ -23,9 +22,9 @@ class DoMath
      * @param int $numberTwo
      * @return int
      */
-    public static function sum( int $numberOne, int $numberTwo ) : int
+    public static function sum(int $numberOne, int $numberTwo) : int
     {
-        return static::getMathFactory()->singleNumberFactory( $numberOne, 'sum' )->operate( $numberTwo );
+        return static::getMathFactory()->singleNumberFactory($numberOne, 'sum')->operate($numberTwo);
     }
 
     /**
@@ -35,9 +34,9 @@ class DoMath
      * @param int $numberTwo
      * @return int
      */
-    public static function subtract( int $numberOne, int $numberTwo ) : int
+    public static function subtract(int $numberOne, int $numberTwo) : int
     {
-        return static::getMathFactory()->singleNumberFactory( $numberOne, 'subtract' )->operate( $numberTwo );
+        return static::getMathFactory()->singleNumberFactory($numberOne, 'subtract')->operate($numberTwo);
     }
 
     /**
@@ -46,11 +45,11 @@ class DoMath
      * @param array $numbers
      * @return float
      */
-    public static function average( array  $numbers )
+    public static function average(array  $numbers)
     {
         $avg = static::getMathFactory()->averageFactory();
-        foreach ( $numbers as $number ){
-            $avg->addNumber( $number );
+        foreach ($numbers as $number) {
+            $avg->addNumber($number);
         }
 
         return $avg->getAverage();
@@ -63,7 +62,7 @@ class DoMath
      */
     private static function getMathFactory() : MathFactory
     {
-        if( ! static::$mathFactory ){
+        if (! static::$mathFactory) {
             //@TODO get from container
             static::$mathFactory = new MathFactory();
         }

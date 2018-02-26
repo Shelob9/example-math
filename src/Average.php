@@ -3,13 +3,13 @@
 
 namespace ExampleMath;
 
-
 /**
  * Class Average
  *
  * Collects numbers and can find their average value
  */
-class Average {
+class Average
+{
 
     /**
      * @var array
@@ -20,7 +20,7 @@ class Average {
      * @param int $number
      * @return $this
      */
-    public function addNumber( int $number )
+    public function addNumber(int $number)
     {
         $this->numbers[] = $number;
         return $this;
@@ -33,8 +33,7 @@ class Average {
      */
     public function getAverage() : float
     {
-
-        if ( is_array( $this->numbers ) &&  count( $this->numbers ) ) {
+        if (is_array($this->numbers) &&  count($this->numbers)) {
             $sum = singleNumberMathFactory(0, 'sum');
             foreach ($this->numbers as $number) {
                 $sum = (singleNumberMathFactory($sum->operate($number), 'sum'));
@@ -44,8 +43,6 @@ class Average {
         }
 
         return 0;
-
-
     }
 
     /**
@@ -58,6 +55,5 @@ class Average {
         //https://stackoverflow.com/a/33461488/1469799
         $numbers = array_filter($this->numbers);
         return floatval(array_sum($numbers)/count($numbers));
-
     }
 }

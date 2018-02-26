@@ -11,5 +11,4 @@ namespace ExampleMath;
  */
 interface CreatesMathObject
 {
-
 }

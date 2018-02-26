@@ -3,10 +3,10 @@
 
 namespace ExampleMath;
 
-
-abstract  class Divide extends SingleNumberMath {
+abstract class Divide extends SingleNumberMath
+{
     /** @inheritdoc */
-    public function operate( int $number ) : int
+    public function operate(int $number) : int
     {
         return $this->number / $number;
     }

@@ -13,15 +13,13 @@ namespace ExampleMath;
  */
 class MathFactory implements CreatesMathObject
 {
-
-    public function singleNumberFactory( int $number, string $type) : OperatesOnNumber
+    public function singleNumberFactory(int $number, string $type) : OperatesOnNumber
     {
-        return \singleNumberMathFactory(  $number,  $type );
+        return \singleNumberMathFactory($number, $type);
     }
 
     public function averageFactory() : Average
     {
         return new Average;
     }
-
 }
