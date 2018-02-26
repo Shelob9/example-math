@@ -20,5 +20,15 @@
         "sniffs" : "phpcs --standard=PSR2 src/ && phpcs --standard=PSR2 tests/",
         "fixes" : "php-cs-fixer fix src/ && php-cs-fixer fix tests/",
         "lints" : "parallel-lint ./src  --blame --exclude vendor && parallel-lint ./tests  --blame --exclude vendor"
+    },
+    "autoload": {
+        "psr-4": {
+            "ExampleMath\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ExampleMath\\Tests\\": "tests/"
+        }
     }
 }
